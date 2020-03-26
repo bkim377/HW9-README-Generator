@@ -1,9 +1,10 @@
-<h1>Project Name: HW9-ReadME-Generator</h1>
+<h1>Project Name: HW9-ReadME-maker</h1>
       <img src="https://img.shields.io/static/v1?label=License&message=MIT&color=blue" alt="Badge for License"></img>
         <hr>
-      <h3>Project Description: </h3><p>My HW9 submission</p>
+      <h3>Project Description: </h3><p>My HW9 submission - 3/26/20</p>
       <h3>Table of Contents: </h3>
       <ol>
+
       1. Project Name
 
       2. Description
