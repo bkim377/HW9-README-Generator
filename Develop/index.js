@@ -3,8 +3,8 @@ var inquirer = require("inquirer");
 var axios = require("axios");
 var fs = require("fs");
 
-// list of questions to ask the user
-const questions = [
+// list of questionList to ask the user
+const questionList = [
   "Enter your GitHub username:",
   "What license will you use?",
   "What is your project's name?",
@@ -17,45 +17,51 @@ const questions = [
   "List the questions for this project:"
 ];
 
-// the inquirer prompt that asks the questions listed above
+// the inquirer prompt that asks the questionList listed above
 inquirer
   .prompt([
     { type: "input", 
-      message: questions[0], 
+      message: questionList[0], 
       name: "username" },
     { type: "list",
-      message: questions[1],
+      message: questionList[1],
       name: "license",
       choices: ["MIT", "Mozilla", "GNU", "Apache", "Boost", "Unlicense"]},
     { type: "input", 
-      message: questions[2], 
+      message: questionList[2], 
       name: "projectName" },
     { type: "input", 
-      message: questions[3], 
+      message: questionList[3], 
       name: "projectDescription" },
     { type: "input",
-      message: questions[4],
+      message: questionList[4],
       name: "tableOfContents",
-      default: `* Project Name\n  * Description\n  * Install Instructions\n  * Usage\n  * Contributors\n  * Tests\n  * Questions` },
+      default: `1. Project Name
+      2. Description
+      3. Install Instructions
+      4. Usage
+      5. Contributors
+      6. Tests
+      7. Questions` },
     { type: "input",
-      message: questions[5],
+      message: questionList[5],
       name: "installInstructions",
       default: "Run npm install in correct directory" },
     { type: "input",
-      message: questions[6],
+      message: questionList[6],
       name: "usage",
-      default: "follow directions above" },
+      default: "Follow directions above, then clone the repo and test it yourself" },
     { type: "input",
-      message: questions[7],
+      message: questionList[7],
       name: "contributors",
       default: "None" },
     { type: "input", 
-      message: questions[8], 
+      message: questionList[8], 
       name: "tests", 
       default: "None" },
     { type: "input", 
-      message: questions[9], 
-      name: "questions", 
+      message: questionList[9], 
+      name: "questionList", 
       default: "None" }
   ])
   .then(response => {
@@ -73,7 +79,7 @@ inquirer
       <h3>Usage: </h3><p>${response.usage}</p>
       <h3>Contributing Users: </h3><p>${response.contributors}</p>
       <h3>Tests: </h3><p>${response.tests}</p>
-      <h3>Questions: </h3><p>${response.questions}</p>
+      <h3>Questions: </h3><p>${response.questionList}</p>
       <h2>Creator's Picture: </h2><img src=${res.data.avatar_url} alt="User Profile Pic"></img>
       `;
 
