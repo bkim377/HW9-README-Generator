@@ -36,7 +36,8 @@ inquirer
     { type: "input",
       message: questionList[4],
       name: "tableOfContents",
-      default: `1. Project Name\n
+      default: `
+      1. Project Name\n
       2. Description\n
       3. Install Instructions\n
       4. Usage\n
@@ -74,7 +75,8 @@ inquirer
       <img src="https://img.shields.io/static/v1?label=License&message=${response.license}&color=blue" alt="Badge for License"></img>
         <hr>
       <h3>Project Description: </h3><p>${response.projectDescription}</p>
-      <h3>Table of Contents: </h3><ol>${response.tableOfContents}</ol>
+      <h3>Table of Contents: </h3>
+      <ol>${response.tableOfContents}</ol>
       <h3>Installation Instructions: </h3><p>${response.installInstructions}</p>
       <h3>Usage: </h3><p>${response.usage}</p>
       <h3>Contributing Users: </h3><p>${response.contributors}</p>
