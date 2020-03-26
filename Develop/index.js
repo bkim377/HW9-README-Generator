@@ -36,7 +36,7 @@ inquirer
     { type: "input",
       message: questionList[4],
       name: "tableOfContents",
-      default: `1. Project Name\n
+      default: `\n1. Project Name\n
         2. Description\n
         3. Install Instructions\n
         4. Usage\n
