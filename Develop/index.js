@@ -4,55 +4,93 @@ var fs = require("fs");
 
 const questions = [
   "Enter your GitHub username:",
-  "What is your preferred badge label?",
-  "What would you like your badge to say?",
+  "What license will you use?",
   "What is your project's name?",
   "What is your project's description?",
   "What is the table of contents?",
-  "What are the installation instructions?",
+  "What are the install instructions?",
   "What is the usage?",
-  "What license will you use?",
   "Who is contributing to this project?",
   "What tests are included?",
   "List the questions for this project:"
 ];
 
-inquirer.prompt({
-    message: questions[0],
-    name: "username"
-  })
-  .then(function({ username }) {
-    const queryUrl = `https://api.github.com/users/${username}`;
-    
-    axios.get(queryUrl).then(function(res) {
-        const {name} = res.data; 
-        console.log(name);
-        
-
-        // const realNameString = realName.join("\n");
-
-        // fs.writeFile("test.html", realNameString, function(err) {
-        //   if (err) {
-        //     throw err;
-        //   }
-        //   console.log(realName);
-        // })
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
+inquirer.prompt([ 
+  {type: "input", 
+  message: questions[0], 
+  name: "username"},
+  {type: "list", 
+  message: questions[1], 
+  name: "license", list: ["MIT", "Mozilla", "GNU", "Apache", "Boost", "Unlicense"]},
+  {type: "input", 
+  message: questions[2], 
+  name: "projectName"},
+  {type: "input", 
+  message: questions[3], 
+  name: "projectDescription"},
+  {type: "input", 
+  message: questions[4], 
+  name: "tableOfContents", default: `*Project Name\n *Description\n *Install Instructions\n *Usage\n *Contributors\n *Tests\n *Questions`},
+  {type: "input", 
+  message: questions[5], 
+  name: "installInstructions", default: "Run npm install in correct directory"},
+  {type: "input", 
+  message: questions[6], 
+  name: "usage", default: "follow directions above"},
+  {type: "input", 
+  message: questions[7], 
+  name: "contributors", default: "None"},
+  {type: "input", 
+  message: questions[8], 
+  name: "tests", default: "None"},
+  {type: "input", 
+  message: questions[9], 
+  name: "questions", default: "None"}
+])
+.then(response => {
+  const queryURL = `https://api.github.com/users/${response.username}`
+  axios.get(queryURL).then(function(res){
 
   });
+})
+// },
+  //   
+  // })
+  // .then(function({ username }) {
+  //   const queryUrl = `https://api.github.com/users/${username}`;
+    
+  //   axios.get(queryUrl).then(function(res) {
+  //       const [avatar_url, email] = res.data; 
+  //       // const profilePic = window.print(avatar_url);
 
+  //       fs.writeFile("READMEgen.md", avatar_url + "\n", function(err) {
+  //         if (err) {
+  //           throw err;
+  //         }
+  //         console.log(avatar_url);
+  //       });
+  //     })
+  //     .catch(function(err) {
+  //       console.log(err);
+  //       fs.appendFile("READMEgen.md", email, function(err) {
+  //         if (err) {
+  //           throw err;
+  //         }
+  //         console.log(email);
+  //       });
+  //     })
+  //     .catch(function(err) {
+  //       console.log(err);
+  //     });
+  //     });
+      
 
+  
 
-
+  // message: questions[1],
+  // name: "badgeLabel"
 //   ([
-//   {
-//     type: "input",
-//     message: questions[1],
-//     name: "badgeLabel"
-//   },
+ 
 //   {
 //     type: "input",
 //     message: questions[2],
@@ -105,8 +143,8 @@ inquirer.prompt({
 //   },
 // ]);
 
-function writeToFile(fileName, data) {}
+// function writeToFile(fileName, data) {}
 
-function init() {}
+// function init() {}
 
 // init();
