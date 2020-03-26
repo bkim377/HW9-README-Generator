@@ -36,13 +36,13 @@ inquirer
     { type: "input",
       message: questionList[4],
       name: "tableOfContents",
-      default: `  1. Project Name\n
-        2. Description\n
-        3. Install Instructions\n
-        4. Usage\n
-        5. Contributors\n
-        6. Tests\n
-        7. Questions\n` },
+      default: `1. Project Name\n
+      2. Description\n
+      3. Install Instructions\n
+      4. Usage\n
+      5. Contributors\n
+      6. Tests\n
+      7. Questions\n` },
     { type: "input",
       message: questionList[5],
       name: "installInstructions",
