@@ -42,7 +42,7 @@ inquirer
         4. Usage\n
         5. Contributors\n
         6. Tests\n
-        7. Questions` },
+        7. Questions\n` },
     { type: "input",
       message: questionList[5],
       name: "installInstructions",

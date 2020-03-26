@@ -1,7 +1,7 @@
 <h1>Project Name: HW9-ReadME-Generator</h1>
       <img src="https://img.shields.io/static/v1?label=License&message=MIT&color=blue" alt="Badge for License"></img>
         <hr>
-      <h3>Project Description: </h3><p>My HW9 Submission (3/26/2020)</p>
+      <h3>Project Description: </h3><p>My HW9 Submision (3/26/2020)</p>
       <h3>Table of Contents: </h3><ol>1. Project Name
 
         2. Description
@@ -14,7 +14,8 @@
 
         6. Tests
 
-        7. Questions</ol>
+        7. Questions
+</ol>
       <h3>Installation Instructions: </h3><p>Run npm install in correct directory</p>
       <h3>Usage: </h3><p>Follow directions above, then clone the repo and test it yourself</p>
       <h3>Contributing Users: </h3><p>Brandon Kim</p>
