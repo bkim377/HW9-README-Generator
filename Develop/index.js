@@ -1,7 +1,9 @@
+// defines all necessary global variables to make node index.js work as intended
 var inquirer = require("inquirer");
 var axios = require("axios");
 var fs = require("fs");
 
+// list of questions to ask the user
 const questions = [
   "Enter your GitHub username:",
   "What license will you use?",
@@ -15,86 +17,91 @@ const questions = [
   "List the questions for this project:"
 ];
 
-inquirer.prompt([ 
-  {type: "input", 
-  message: questions[0], 
-  name: "username"},
-  {type: "list", 
-  message: questions[1], 
-  name: "license", list: ["MIT", "Mozilla", "GNU", "Apache", "Boost", "Unlicense"]},
-  {type: "input", 
-  message: questions[2], 
-  name: "projectName"},
-  {type: "input", 
-  message: questions[3], 
-  name: "projectDescription"},
-  {type: "input", 
-  message: questions[4], 
-  name: "tableOfContents", default: `*Project Name\n *Description\n *Install Instructions\n *Usage\n *Contributors\n *Tests\n *Questions`},
-  {type: "input", 
-  message: questions[5], 
-  name: "installInstructions", default: "Run npm install in correct directory"},
-  {type: "input", 
-  message: questions[6], 
-  name: "usage", default: "follow directions above"},
-  {type: "input", 
-  message: questions[7], 
-  name: "contributors", default: "None"},
-  {type: "input", 
-  message: questions[8], 
-  name: "tests", default: "None"},
-  {type: "input", 
-  message: questions[9], 
-  name: "questions", default: "None"}
-])
-.then(response => {
-  const queryURL = `https://api.github.com/users/${response.username}`
-  axios.get(queryURL).then(function(res){
+// the inquirer prompt that asks the questions listed above
+inquirer
+  .prompt([
+    { type: "input", message: questions[0], name: "username" },
+    {
+      type: "list",
+      message: questions[1],
+      name: "license",
+      choices: ["MIT", "Mozilla", "GNU", "Apache", "Boost", "Unlicense"]
+    },
+    { type: "input", message: questions[2], name: "projectName" },
+    { type: "input", message: questions[3], name: "projectDescription" },
+    {
+      type: "input",
+      message: questions[4],
+      name: "tableOfContents",
+      default: `*Project Name\n *Description\n *Install Instructions\n *Usage\n *Contributors\n *Tests\n *Questions`
+    },
+    {
+      type: "input",
+      message: questions[5],
+      name: "installInstructions",
+      default: "Run npm install in correct directory"
+    },
+    {
+      type: "input",
+      message: questions[6],
+      name: "usage",
+      default: "follow directions above"
+    },
+    {
+      type: "input",
+      message: questions[7],
+      name: "contributors",
+      default: "None"
+    },
+    { type: "input", message: questions[8], name: "tests", default: "None" },
+    { type: "input", message: questions[9], name: "questions", default: "None" }
+  ])
+  .then(response => {
+    const queryURL = `https://api.github.com/users/${response.username}`;
+    axios.get(queryURL).then(function(res) {
+      console.log(res.data);
+      const {avatar_url} = res.data;
+      // const profilePic = window.print(avatar_url);
 
+      fs.writeFile("READMEgen.md", avatar_url + "\n", function(err) {
+        if (err) {
+          throw err;
+        }
+        console.log(avatar_url);
+      });
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
   });
-})
 // },
-  //   
-  // })
-  // .then(function({ username }) {
-  //   const queryUrl = `https://api.github.com/users/${username}`;
-    
-  //   axios.get(queryUrl).then(function(res) {
-  //       const [avatar_url, email] = res.data; 
-  //       // const profilePic = window.print(avatar_url);
+//
+// })
+// .then(function({ username }) {
+//   const queryUrl = `https://api.github.com/users/${username}`;
 
-  //       fs.writeFile("READMEgen.md", avatar_url + "\n", function(err) {
-  //         if (err) {
-  //           throw err;
-  //         }
-  //         console.log(avatar_url);
-  //       });
-  //     })
-  //     .catch(function(err) {
-  //       console.log(err);
-  //       fs.appendFile("READMEgen.md", email, function(err) {
-  //         if (err) {
-  //           throw err;
-  //         }
-  //         console.log(email);
-  //       });
-  //     })
-  //     .catch(function(err) {
-  //       console.log(err);
-  //     });
-  //     });
+//   axios.get(queryUrl).then(function(res) {
       
+//       fs.appendFile("READMEgen.md", email, function(err) {
+//         if (err) {
+//           throw err;
+//         }
+//         console.log(email);
+//       });
+//     })
+//     .catch(function(err) {
+//       console.log(err);
+//     });
+//     });
 
-  
-
-  // message: questions[1],
-  // name: "badgeLabel"
+// message: questions[1],
+// name: "badgeLabel"
 //   ([
- 
+
 //   {
 //     type: "input",
 //     message: questions[2],
-//     name: "badgeContent" 
+//     name: "badgeContent"
 //   },
 //   {
 //     type: "input",
