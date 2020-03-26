@@ -36,13 +36,13 @@ inquirer
     { type: "input",
       message: questionList[4],
       name: "tableOfContents",
-      default: `1. Project Name
-      2. Description
-      3. Install Instructions
-      4. Usage
-      5. Contributors
-      6. Tests
-      7. Questions` },
+      default: `1. Project Name\n
+        2. Description\n
+        3. Install Instructions\n
+        4. Usage\n
+        5. Contributors\n
+        6. Tests\n
+        7. Questions` },
     { type: "input",
       message: questionList[5],
       name: "installInstructions",
@@ -83,7 +83,7 @@ inquirer
       <h2>Creator's Picture: </h2><img src=${res.data.avatar_url} alt="User Profile Pic"></img>
       `;
 
-        fs.writeFile("READMEgen.md", fileContent, function(err) {
+        fs.writeFile("README-bkim377.md", fileContent, function(err) {
           if (err) {
             throw err;
           }
