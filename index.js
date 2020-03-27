@@ -74,7 +74,7 @@ inquirer
         const fileContent = 
         `<h1>Project Name: ${response.projectName}</h1>
       <img src="https://img.shields.io/static/v1?label=License&message=${response.license}&color=blue" alt="Badge for License"></img>
-      ![Gif of ReadME Maker](giphy-readme-maker.gif)
+      <img src="giphy-readme-maker.gif" alt="GIF of index.js"></img>
         <hr>
       <h3>Project Description: </h3><p>${response.projectDescription}</p>
       <h3>Table of Contents: </h3>
