@@ -109,7 +109,7 @@ inquirer
 <img src="${res.data.avatar_url}" alt="User Profile Pic"></img>
 `;
 
-        fs.writeFile("README-bkim377.md", fileContent, function(err) {
+        fs.writeFile("README.md", fileContent, function(err) {
           if (err) {
             throw err;
           }
