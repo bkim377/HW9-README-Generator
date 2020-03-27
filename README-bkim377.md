@@ -43,7 +43,7 @@
       
 ### Contributing Users:
 
-<p>Brandon</p>
+<p>Brandon Kim</p>
 
 
 ### Tests:
@@ -58,4 +58,4 @@
       
 ## Creator's Picture:
 
-<img src=https://avatars0.githubusercontent.com/u/61259374?v=4 alt="User Profile Pic"></img>
+<img src="https://avatars0.githubusercontent.com/u/61259374?v=4" alt="User Profile Pic"></img>
