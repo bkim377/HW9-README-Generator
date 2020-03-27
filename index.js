@@ -20,20 +20,17 @@ const questionList = [
 // the inquirer prompt that asks the questionList listed above
 inquirer
   .prompt([
-    { type: "input", 
-      message: questionList[0], 
-      name: "username" },
-    { type: "list",
+    { type: "input", message: questionList[0], name: "username" },
+    {
+      type: "list",
       message: questionList[1],
       name: "license",
-      choices: ["MIT", "Mozilla", "GNU", "Apache", "Boost", "Unlicense"]},
-    { type: "input", 
-      message: questionList[2], 
-      name: "projectName" },
-    { type: "input", 
-      message: questionList[3], 
-      name: "projectDescription" },
-    { type: "input",
+      choices: ["MIT", "Mozilla", "GNU", "Apache", "Boost", "Unlicense"]
+    },
+    { type: "input", message: questionList[2], name: "projectName" },
+    { type: "input", message: questionList[3], name: "projectDescription" },
+    {
+      type: "input",
       message: questionList[4],
       name: "tableOfContents",
       default: `\n
@@ -43,27 +40,34 @@ inquirer
       4. Usage\n
       5. Contributors\n
       6. Tests\n
-      7. Questions\n` },
-    { type: "input",
+      7. Questions\n`
+    },
+    {
+      type: "input",
       message: questionList[5],
       name: "installInstructions",
-      default: "Run npm install in correct directory" },
-    { type: "input",
+      default: "Run npm install in correct directory"
+    },
+    {
+      type: "input",
       message: questionList[6],
       name: "usage",
-      default: "Follow directions above, then clone the repo and test it yourself" },
-    { type: "input",
+      default:
+        "Follow directions above, then clone the repo and test it yourself"
+    },
+    {
+      type: "input",
       message: questionList[7],
       name: "contributors",
-      default: "None" },
-    { type: "input", 
-      message: questionList[8], 
-      name: "tests", 
-      default: "None" },
-    { type: "input", 
-      message: questionList[9], 
-      name: "questionList", 
-      default: "None" }
+      default: "None"
+    },
+    { type: "input", message: questionList[8], name: "tests", default: "None" },
+    {
+      type: "input",
+      message: questionList[9],
+      name: "questionList",
+      default: "None"
+    }
   ])
   .then(response => {
     const queryURL = `https://api.github.com/users/${response.username}`;
@@ -71,35 +75,39 @@ inquirer
       .get(queryURL)
       .then(function(res) {
         // console.log(res.data);
-        const fileContent = 
-        `# Project Name: ${response.projectName}
-      <img src="https://img.shields.io/static/v1?label=License&message=${response.license}&color=blue" alt="Badge for License"></img>
-      <img src="giphy-readme-maker.gif" alt="GIF of index.js"></img>
-        <hr>
-      ### Project Description:
-      <p>${response.projectDescription}</p>
+        const fileContent = `
+# Project Name: ${response.projectName} \n
+
+<img src="https://img.shields.io/static/v1?label=License&message=${response.license}&color=blue" alt="Badge for License"></img>
       
-      ### Table of Contents:
-      <ol>${response.tableOfContents}</ol>
+<img src="giphy-readme-maker.gif" alt="GIF of index.js"></img>
 
-      ### Installation Instructions:
-      <p>${response.installInstructions}</p>
+<hr>
 
-      ### Usage:
-      <p>${response.usage}</p>
+### Project Description:\n
+<p>${response.projectDescription}</p>\n
       
-      ### Contributing Users:
-      <p>${response.contributors}</p>
+### Table of Contents:
+<ol>${response.tableOfContents}</ol>
 
-      ### Tests:
-      <p>${response.tests}</p>
+### Installation Instructions:\n
+<p>${response.installInstructions}</p>\n
 
-      ### Questions:
-      <p>${response.questionList}</p>
+### Usage:\n
+<p>${response.usage}</p>\n
       
-      ## Creator's Picture:
-      <img src=${res.data.avatar_url} alt="User Profile Pic"></img>
-      `;
+### Contributing Users:\n
+<p>${response.contributors}</p>\n
+
+### Tests:\n
+<p>${response.tests}</p>\n
+
+### Questions:\n
+<p>${response.questionList}</p>\n
+      
+## Creator's Picture:\n
+<img src=${res.data.avatar_url} alt="User Profile Pic"></img>
+`;
 
         fs.writeFile("README-bkim377.md", fileContent, function(err) {
           if (err) {
